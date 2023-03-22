@@ -1,5 +1,8 @@
+
+
 /* 
-A. Pizza Metrics
+Queries from week 2 of Danny's 8-Week SQL challenge
+Part A. Pizza Metrics
 */
 
 -- 1. How many pizzas were ordered?
