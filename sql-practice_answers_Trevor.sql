@@ -29,10 +29,10 @@ weight		| INT
 
 ---------------------------
 table: admissions
-patient_id			| INT
+patient_id		| INT
 admission_date		| DATE
 discharge_date		| DATE
-diagnosis			|TEXT
+diagnosis		|TEXT
 attending_doctor_id	| INT
 ---------------------------
 
@@ -46,7 +46,7 @@ specialty	| TEXT
 
 -------------------------
 table: province_names
-province_id		| CHAR(2)
+province_id	| CHAR(2)
 province_name	| TEXT
 -------------------------
 */
