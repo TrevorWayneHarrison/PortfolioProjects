@@ -60,8 +60,8 @@ EASY-LEVEL QUESTIONS
 -- Show first name, last name, and gender of patients who's gender is 'M'
 SELECT
 	first_name,
-    last_name,
-    gender
+    	last_name,
+    	gender
 FROM
 	patients
 WHERE
@@ -72,7 +72,7 @@ WHERE
 -- Show first name and last name of patients who does not have allergies. (null)
 SELECT
 	first_name,
-    last_name
+    	last_name
 FROM
 	patients
 WHERE
@@ -93,7 +93,7 @@ WHERE
 -- Show first name and last name of patients that weight within the range of 100 to 120 (inclusive)
 SELECT
 	first_name,
-    last_name
+    	last_name
 FROM
 	patients
 WHERE
@@ -120,12 +120,12 @@ FROM
 -- Show first name, last name, and the full province name of each patient.
 SELECT
 	p.first_name,
-    p.last_name,
-    pn.province_name
+   	p.last_name,
+    	pn.province_name
 FROM
 	patients p
-    JOIN
-    province_names pn ON p.province_id = pn.province_id;
+    	JOIN
+    	province_names pn ON p.province_id = pn.province_id;
     
     
     
@@ -142,8 +142,8 @@ WHERE
 -- Show the first_name, last_name, and height of the patient with the greatest height.
 SELECT
 	first_name,
-    last_name,
-    MAX(height)
+    	last_name,
+    	MAX(height)
 FROM
 	patients;
     
@@ -178,7 +178,7 @@ WHERE
 -- Show the patient id and the total number of admissions for patient_id 579.
 SELECT 
 	patient_id,
-    COUNT(admission_date)
+    	COUNT(admission_date) AS number_of_admissions
 FROM
 	admissions
 WHERE
@@ -199,26 +199,26 @@ WHERE
 -- Write a query to find the first_name, last name and birth date of patients who has height greater than 160 and weight greater than 70
 SELECT 
 	first_name,
-    last_name,
-    birth_date
+    	last_name,
+    	birth_date
 FROM
 	patients
 WHERE
 	height > 160 AND
-    weight > 70;
+    	weight > 70;
 
 
 
 -- Write a query to find list of patients first_name, last_name, and allergies from Hamilton where allergies are not null
 SELECT 
 	first_name,
-    last_name,
-    allergies
+    	last_name,
+    	allergies
 FROM
 	patients
 WHERE
 	city = 'Hamilton' AND
-    allergies IS NOT NULL;
+    	allergies IS NOT NULL;
 
 
 
@@ -229,10 +229,10 @@ FROM
 	patients
 WHERE
 	city LIKE 'A%' or
-    city LIKE 'E%' or
-    city LIKE 'I%' or
-    city LIKE 'O%' or
-    city LIKE 'U%'
+    	city LIKE 'E%' or
+    	city LIKE 'I%' or
+    	city LIKE 'O%' or
+    	city LIKE 'U%'
 ORDER BY city ASC;
 
 
@@ -268,24 +268,24 @@ WHERE
 -- Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
 SELECT 
 	patient_id,
-    first_name
+    	first_name
 FROM
 	patients
 WHERE
 	first_name LIKE 'S%s' AND
-    length(first_name) >= 6;
+    	length(first_name) >= 6;
     
 
 
 -- Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'.
 SELECT 
 	p.patient_id,
-    p.first_name,
-    p.last_name
+    	p.first_name,
+    	p.last_name
 FROM
 	patients p
-    JOIN
-    admissions a ON a.patient_id = p.patient_id
+    	JOIN
+    	admissions a ON a.patient_id = p.patient_id
 WHERE
 	a.diagnosis = 'Dementia';
 
@@ -308,13 +308,13 @@ SELECT
       		WHEN gender = 'M' THEN 1
       		ELSE 0
       	END
-    ) AS male_total,
-    SUM(
+    	) AS male_total,
+    	SUM(
     	CASE
       		WHEN gender = 'F' THEN 1
       		ELSE 0
       	END
-    ) AS female_total
+    	) AS female_total
 FROM
 	patients;
     
@@ -323,13 +323,13 @@ FROM
 -- Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'. Show results ordered ascending by allergies then by first_name then by last_name.
 SELECT
 	first_name,
-    last_name,
-    allergies
+    	last_name,
+    	allergies
 FROM
 	patients
 WHERE
 	allergies = 'Penicillin' or
-    allergies = 'Morphine'
+    	allergies = 'Morphine'
 ORDER BY
 	allergies ASC, first_name, last_name;
 
@@ -338,7 +338,7 @@ ORDER BY
 -- Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
 SELECT
 	patient_id,
-    diagnosis
+    	diagnosis
 FROM
 	admissions
 GROUP BY
@@ -351,29 +351,29 @@ HAVING
 -- Show the city and the total number of patients in the city. Order from most to least patients and then by city name ascending.
 SELECT
 	city,
-    COUNT(*) AS number_of_patients
+    	COUNT(*) AS number_of_patients
 FROM
 	patients
 GROUP BY
 	city
 ORDER BY
 	number_of_patients DESC,
-    city ASC;
+    	city ASC;
 
 
 
 -- Show first name, last name and role of every person that is either patient or doctor. The roles are either "Patient" or "Doctor"
 SELECT
 	first_name,
-    last_name,
-    'Patient' AS role
+    	last_name,
+    	'Patient' AS role
 FROM
 	patients
-UNION aLL
+UNION ALL
 SELECT
 	first_name,
-    last_name,
-    'Doctor' AS role
+    	last_name,
+    	'Doctor' AS role
 FROM
 	doctors;
 
@@ -382,7 +382,7 @@ FROM
 -- Show all allergies ordered by popularity. Remove NULL values from query.
 SELECT
 	allergies,
-    COUNT(allergies) AS total_allergies
+    	COUNT(allergies) AS total_allergies
 FROM
 	patients
 WHERE
@@ -397,8 +397,8 @@ ORDER BY
 -- Show all patient's first_name, last_name, and birth_date who were born in the 1970s decade. Sort the list starting from the earliest birth_date.
 SELECT
 	first_name,
-    last_name,
-    birth_date
+    	last_name,
+    	birth_date
 FROM
 	patients
 WHERE
@@ -421,7 +421,7 @@ ORDER BY
 -- Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.
 SELECT
 	province_id,
-    SUM(height) AS sum_of_height
+    	SUM(height) AS sum_of_height
 FROM
 	patients
 GROUP BY 
@@ -444,7 +444,7 @@ WHERE
 -- Show all of the days of the month (1-31) and how many admission_dates occurred on that day. Sort by the day with most admissions to least admissions.
 SELECT
 	DISTINCT DAY(admission_date) AS day_number,
-    COUNT(admission_date) AS number_of_admissions
+    	COUNT(admission_date) AS number_of_admissions
 FROM
 	admissions
 GROUP BY
@@ -471,13 +471,13 @@ LIMIT 1;
 SELECT
 	patient_id,
 	attending_doctor_id,
-    diagnosis
+    	diagnosis
 FROM
 	admissions
 WHERE
 	((patient_id % 2) > 0 AND (attending_doctor_id IN (1, 5, 19)) )
-    or
-    (cast(attending_doctor_id AS TEXT) LIKE '%2%' AND LENGTH(patient_id) = 3);
+    	OR
+    	(cast(attending_doctor_id AS TEXT) LIKE '%2%' AND LENGTH(patient_id) = 3);
     
 
 
@@ -485,12 +485,12 @@ WHERE
 -- Every admission has been attended by a doctor.
 SELECT
 	d.first_name,
-    d.last_name,
-    COUNT(attending_doctor_id)
+    	d.last_name,
+    	COUNT(attending_doctor_id)
 FROM
 	admissions a
-    JOIN
-    doctors d ON d.doctor_id = a.attending_doctor_id
+    	JOIN
+    	doctors d ON d.doctor_id = a.attending_doctor_id
 GROUP BY
 	d.first_name, d.last_name;
     
@@ -499,13 +499,13 @@ GROUP BY
 -- For each doctor, display their id, full name, and the first and last admission date they attended.
 SELECT
 	d.doctor_id,
-    CONCAT(d.first_name, ' ', d.last_name) AS full_name,
-    MIN(a.admission_date) AS first_admission_date,
-    MAX(a.admission_date) AS last_admission_date
+    	CONCAT(d.first_name, ' ', d.last_name) AS full_name,
+    	MIN(a.admission_date) AS first_admission_date,
+    	MAX(a.admission_date) AS last_admission_date
 FROM
 	admissions a
-    JOIN
-    doctors d ON d.doctor_id = a.attending_doctor_id
+    	JOIN
+    	doctors d ON d.doctor_id = a.attending_doctor_id
 GROUP BY
 	d.doctor_id;
 
@@ -514,11 +514,11 @@ GROUP BY
 -- Display the total amount of patients for each province. Order by descending.
 SELECT
 	pn.province_name,
-    COUNT(patient_id) AS patient_count
+    	COUNT(patient_id) AS patient_count
 FROM
 	patients p
-    JOIN
-    province_names pn ON p.province_id = pn.province_id
+    	JOIN
+    	province_names pn ON p.province_id = pn.province_id
 GROUP BY
 	pn.province_name
 ORDER BY
@@ -529,22 +529,22 @@ ORDER BY
 -- For every admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem.
 SELECT
 	CONCAT(p.first_name, ' ', p.last_name) AS patient_name,
-    a.diagnosis AS diagnosis,
-    CONCAT(d.first_name, ' ', d.last_name) AS doctor_name
+    	a.diagnosis AS diagnosis,
+    	CONCAT(d.first_name, ' ', d.last_name) AS doctor_name
 FROM
 	patients p
-    JOIN
-    admissions a ON a.patient_id = p.patient_id
-    JOIN
-    doctors d ON d.doctor_id = a.attending_doctor_id;
+    	JOIN
+    	admissions a ON a.patient_id = p.patient_id
+    	JOIN
+    	doctors d ON d.doctor_id = a.attending_doctor_id;
 
 
 
 -- display the number of duplicate patients based on their first_name and last_name.
 SELECT
 	first_name,
-    last_name,
-    COUNT(*) AS duplicates
+    	last_name,
+    	COUNT(*) AS duplicates
 FROM
 	patients
 GROUP BY 
@@ -559,14 +559,14 @@ HAVING
 -- Convert KG to pounds by multiplying by 2.205.
 SELECT
 	CONCAT(first_name, ' ', last_name) AS full_name,
-    ROUND(height/30.48, 1) AS height,
-    ROUND(weight*2.205, 0) AS weight,
-    birth_date,
-    CASE
-    	WHEN gender = 'M' THEN 'Male'
-        WHEN gender = 'F' THEN 'Female'
-        ELSE 'Other'
-    END AS gender
+    	ROUND(height/30.48, 1) AS height,
+    	ROUND(weight*2.205, 0) AS weight,
+    	birth_date,
+    	CASE
+    		WHEN gender = 'M' THEN 'Male'
+        	WHEN gender = 'F' THEN 'Female'
+        	ELSE 'Other'
+    	END AS gender
 FROM
 	patients;
 
@@ -613,12 +613,12 @@ ORDER BY weight_group DESC;
 -- height is in units cm.
 SELECT
 	patient_id,
-    weight,
-    height,
-    CASE
-    	WHEN weight / (POWER(height*0.01, 2)) >= 30 THEN 1
+    	weight,
+    	height,
+    	CASE
+    		WHEN weight / (POWER(height*0.01, 2)) >= 30 THEN 1
         ELSE 0
-    END AS isObese
+    	END AS isObese
 FROM
 	patients;
 
@@ -629,18 +629,18 @@ FROM
 -- Check patients, admissions, and doctors tables for required information. 
 SELECT
 	p.patient_id,
-    p.first_name,
-    p.last_name,
-    d.specialty
+    	p.first_name,
+    	p.last_name,
+    	d.specialty
 FROM
 	patients p
-    JOIN
-    admissions a ON a.patient_id = p.patient_id
-    JOIN
-    doctors d ON d.doctor_id = a.attending_doctor_id
+    	JOIN
+    	admissions a ON a.patient_id = p.patient_id
+    	JOIN
+    	doctors d ON d.doctor_id = a.attending_doctor_id
 WHERE
 	a.diagnosis = 'Epilepsy' AND
-    d.first_name = 'Lisa';
+    	d.first_name = 'Lisa';
 
 
 
@@ -651,11 +651,11 @@ WHERE
 -- 3. year of patient's birth_date
 SELECT
 	DISTINCT p.patient_id,
-    CONCAT(p.patient_id, LENGTH(p.last_name), YEAR(p.birth_date)) AS temp_password
+    	CONCAT(p.patient_id, LENGTH(p.last_name), YEAR(p.birth_date)) AS temp_password
 FROM
 	patients p
-    JOIN
-    admissions a ON p.patient_id = a.patient_id;
+    	JOIN
+    	admissions a ON p.patient_id = a.patient_id;
 
 
 
@@ -663,11 +663,11 @@ FROM
 -- Give each patient a 'Yes' if they have insurance, and a 'No' if they don't have insurance. Add up the admission_total cost for each has_insurance group.
 SELECt
 	CASE
-    	WHEN patient_id % 2 = 0 THEN 'Yes'
+    		WHEN patient_id % 2 = 0 THEN 'Yes'
         ELSE 'No'
-    END as has_insurance,
+    	END as has_insurance,
     SUM(CASE
-        WHEN patient_id % 2 = 0 THEN 10
+        	WHEN patient_id % 2 = 0 THEN 10
         ELSE 50
         END) AS cost_after_insurance
 FROM
@@ -681,8 +681,8 @@ SELECT
 	province_name
 FROM
 	province_names pn
-    JOIN
-    patients p ON p.province_id = pn.province_id
+    	JOIN
+    	patients p ON p.province_id = pn.province_id
 GROUP BY
 	province_name
 HAVING
@@ -702,11 +702,11 @@ FROM
 	patients
 WHERE
 	first_name LIKE '__r%' AND
-    gender = 'F' AND
-    MONTH(birth_date) IN (02, 05, 12) AND
-    weight BETWEEN 60 AND 80 AND
-    patient_id % 2 > 0 AND
-    city = 'Kingston';
+    	gender = 'F' AND
+    	MONTH(birth_date) IN (02, 05, 12) AND
+    	weight BETWEEN 60 AND 80 AND
+    	patient_id % 2 > 0 AND
+    	city = 'Kingston';
 
 
 
@@ -724,8 +724,8 @@ FROM
 -- For each day display the total amount of admissions on that day. Display the amount changed from the previous date.
 SELECT
 	admission_date,
-    COUNT(*) AS admissions_on_day,
-    COUNT(*) - LAG(COUNT(*)) OVER (ORDER BY admission_date) AS admissions_change
+    	COUNT(*) AS admissions_on_day,
+    	COUNT(*) - LAG(COUNT(*)) OVER (ORDER BY admission_date) AS admissions_change
 FROM
 	admissions
 GROUP BY
@@ -768,37 +768,37 @@ customer_id 	| TEXT
 company_name 	| TEXT
 contact_name 	| TEXT
 contact_title 	| TEXT
-address 		| TEXT
-city 			| TEXT
-region 			| TEXT
+address 	| TEXT
+city 		| TEXT
+region 		| TEXT
 postal_code 	| TEXT
-country 		| TEXT
-phone 			| TEXT
-fax 			| TEXT
+country 	| TEXT
+phone 		| TEXT
+fax 		| TEXT
 -----------------------
 
 ---------------------------
 table: employees
 employee_id 		| INT
-last_name 			| TEXT
-first_name 			| TEXT
-title 				| TEXT
+last_name 		| TEXT
+first_name 		| TEXT
+title 			| TEXT
 title_of_courtesy 	| TEXT
-birth_date 			| DATE
-hire_date 			| DATE
-address 			| TEXT
-city 				| TEXT
-region 				| TEXT
+birth_date 		| DATE
+hire_date 		| DATE
+address 		| TEXT
+city 			| TEXT
+region 			| TEXT
 postal_code 		| TEXT
-country 			| TEXT
-home_phone 			| TEXT
-extension 			| TEXT
-reports_to 			| INT
+country 		| TEXT
+home_phone 		| TEXT
+extension 		| TEXT
+reports_to 		| INT
 ---------------------------
 
 ---------------------------
 table: employee_territories
-employee_id		| INT
+employee_id	| INT
 territory_id	| TEXT
 ---------------------------
 
@@ -813,47 +813,47 @@ discount 	| DECIMAL
 
 -----------------------------
 table: orders
-order_id 			| INT
+order_id 		| INT
 customer_id 		| TEXT
 employee_id 		| INT
-order_date 			| DATE
+order_date 		| DATE
 required_date 		| DATE
 shipped_date 		| DATE
-ship_via 			| INT
-freight 			| DECIMAL
-ship_name 			| TEXT
+ship_via 		| INT
+freight 		| DECIMAL
+ship_name 		| TEXT
 ship_address 		| TEXT
-ship_city 			| TEXT
+ship_city 		| TEXT
 ship_region 		| TEXT
 ship_postal_code 	| TEXT
 ship_country 		| TEXT
 ----------------------------
 
----------------------------
+---------------------------------
 table: products
-product_id 			INT
-product_name 		TEXT
-supplier_id 		INT
-category_id 		INT
-quantity_per_unit 	TEXT
-unit_price 			DECIMAL
-units_in_stock 		INT
-units_on_order 		INT
-reorder_level 		INT
-discontinued 		INT
---------------------------
+product_id 		| INT
+product_name 		| TEXT
+supplier_id 		| INT
+category_id 		| INT
+quantity_per_unit 	| TEXT
+unit_price 		| DECIMAL
+units_in_stock 		| INT
+units_on_order 		| INT
+reorder_level 		| INT
+discontinued 		| INT
+--------------------------------
 
 --------------------------
 table: regions
-region_id			| INT
+region_id		| INT
 region_description	| TEXT
 --------------------------
 
 ----------------------
 table: shipppers
-shipper_id		| INT
+shipper_id	| INT
 company_name	| TEXT
-phone			| TEXT
+phone		| TEXT
 ----------------------
 
 ----------------------
@@ -862,21 +862,21 @@ supplier_id 	| INT
 company_name 	| TEXT
 contact_name 	| TEXT
 contact_title 	| TEXT
-address 		| TEXT
-city 			| TEXT
-region 			| TEXT
+address 	| TEXT
+city 		| TEXT
+region 		| TEXT
 postal_code 	| TEXT
-country 		| TEXT
-phone 			| TEXT
-fax 			| TEXT
-home_page 		| TEXT
+country 	| TEXT
+phone 		| TEXT
+fax 		| TEXT
+home_page 	| TEXT
 ----------------------
 
 ------------------------------
 table: territories
-territory_id			| TEXT
+territory_id		| TEXT
 territory_description	| TEXT
-region_id				| INT
+region_id		| INT
 ------------------------------
 
 */
@@ -890,7 +890,7 @@ EASY-LEVEL QUESTIONS
 -- Show the category_name and description from the categories table sorted by category_name.
 SELECT
 	category_name,
-    description
+    	description
 FROM
 	categories
 ORDER BY
@@ -901,8 +901,8 @@ ORDER BY
 -- Show all the contact_name, address, city of all customers which are not from 'Germany', 'Mexico', 'Spain'
 SELECT
 	contact_name,
-    address,
-    city
+    	address,
+    	city
 FROM
 	customers
 WHERE
@@ -913,9 +913,9 @@ WHERE
 -- Show order_date, shipped_date, customer_id, Freight of all orders placed on 2018 Feb 26
 SELECT
 	order_date,
-    shipped_date,
-    customer_id,
-    freight
+    	shipped_date,
+    	customer_id,
+    	freight
 FROM
 	orders
 WHERE 
@@ -926,10 +926,10 @@ WHERE
 -- Show the employee_id, order_id, customer_id, required_date, shipped_date from all orders shipped later than the required date
 SELECT
 	employee_id,
-    order_id,
-    customer_id,
-    required_date,
-    shipped_date
+    	order_id,
+    	customer_id,
+    	required_date,
+    	shipped_date
 FROM
 	orders
 WHERe
@@ -950,8 +950,8 @@ WHERE
 -- Show the city, company_name, contact_name of all customers from cities which contains the letter 'L' in the city name, sorted by contact_name
 SELECT
 	city,
-    company_name,
-    contact_name
+    	company_name,
+    	contact_name
 FROM
 	customers
 WHERE
@@ -964,8 +964,8 @@ ORDER BY
 -- Show the company_name, contact_name, fax number of all customers that has a fax number. (not null)
 SELECT
 	company_name,
-    contact_name,
-    fax
+    	contact_name,
+    	fax
 FROM
 	customers
 WHERE
@@ -976,8 +976,8 @@ WHERE
 -- Show the first_name, last_name of the most recently hired employee.
 SELECT
 	first_name,
-    last_name,
-    hire_date
+    	last_name,
+    	hire_date
 FROM
 	employees
 ORDER BY
@@ -989,8 +989,8 @@ LIMIT 1;
 -- Show the average unit price rounded to 2 decimal places, the total units in stock, total discontinued products from the products table.
 SELECT
 	ROUND(AVG(unit_price), 2) AS avg_unit_price,
-    SUM(units_in_stock) AS total_units_in_stock,
-    SUM(discontinued) AS total_discontinued
+    	SUM(units_in_stock) AS total_units_in_stock,
+    	SUM(discontinued) AS total_discontinued
 FROM
 	products;
 
@@ -1005,25 +1005,25 @@ MEDIUM-LEVEL QUESIONS
 -- Show the ProductName, CompanyName, CategoryName from the products, suppliers, and categories table
 SELECT
 	p.product_name,
-    s.company_name,
-    c.category_name
+    	s.company_name,
+    	c.category_name
 FROM
 	categories c
-    JOIN
-    products p ON p.category_id = c.category_id
-    JOIN
-    suppliers s ON s.supplier_id = p.supplier_id;
+    	JOIN
+    	products p ON p.category_id = c.category_id
+    	JOIN
+    	suppliers s ON s.supplier_id = p.supplier_id;
 
 
 
 -- Show the category_name and the average product unit price for each category rounded to 2 decimal places.
 SELECT
 	c.category_name,
-    ROUND(AVG(p.unit_price), 2) AS avg_unit_price
+    	ROUND(AVG(p.unit_price), 2) AS avg_unit_price
 FROM
 	products p 
-    JOIN
-    categories c ON c.category_id = p.category_id
+    	JOIN
+    	categories c ON c.category_id = p.category_id
 GROUP BY
 	c.category_name;
 
@@ -1033,19 +1033,17 @@ GROUP BY
 -- Create a column which contains 'customers' or 'suppliers' depending on the table it came from.
 SELECT
 	city,
-    company_name,
-    contact_name,
-    'customers' AS source
+    	company_name,
+    	contact_name,
+    	'customers' AS source
 FROM
 	customers
-    
 UNION
-
 SELECT
 	city,
-    company_name,
-    contact_name,
-    'suppliers' AS source
+    	company_name,
+    	contact_name,
+    	'suppliers' AS source
 FROM
 	suppliers;
 
@@ -1057,16 +1055,16 @@ HARD-LEVEL QUESTIONS
 -- Order by employee last_name, then by first_name, and then descending by number of orders.
 SELECT
 	e.first_name,
-    e.last_name,
-    COUNT(o.order_id) AS num_orders,
-    CASE
-    	WHEN o.shipped_date < o.required_date THEN 'On Time'
+   	e.last_name,
+    	COUNT(o.order_id) AS num_orders,
+    	CASE
+    		WHEN o.shipped_date < o.required_date THEN 'On Time'
         ELSE 'Late'
-    END as Shipped
+   	END as Shipped
 FROM
 	employees e
-    JOIN
-    orders o ON o.employee_id = e.employee_id
+    	JOIN
+    	orders o ON o.employee_id = e.employee_id
 GROUP BY
 	e.first_name, e.last_name, Shipped
 ORDER BY
