@@ -1,3 +1,30 @@
+/*
+
+SCHEMA: data_bank
+
+Table: regions
+region_id	INTEGER
+region_name	VARCHAR(9)
+
+
+Table: customer_nodes
+customer_id	INTEGER
+region_id	INTEGER
+node_id		INTEGER
+start_date	DATE
+end_date	DATE
+
+
+Table: customer_transactions
+customer_id	INTEGER
+txn_date	DATE
+txn_type	VARCHAR(10)
+txn_amount	INTEGER
+
+*/
+
+
+
 /*---------------------------
 A. Customer Nodes Exploration
 */---------------------------
